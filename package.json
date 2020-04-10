@@ -1,0 +1,17 @@
+{
+    "name": "ratepage",
+    "version": "1.0.0",
+    "description": "Let your visitor rate pages",
+    "main": "index.js",
+    "author": "Maurice Renck",
+    "scripts": {
+        "dev": "parcel watch src/index.js --no-source-maps -d ./",
+        "build": "parcel build src/index.js --no-source-maps --experimental-scope-hoisting -d ./"
+    },
+    "posthtml": {
+        "recognizeSelfClosing": true
+    },
+    "dependencies": {
+        "vue": "^2.6.11"
+    }
+}
