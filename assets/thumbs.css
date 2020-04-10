@@ -1,0 +1,38 @@
+.rate-page__thumbs {
+    font-size: 16px;
+    text-align: center;
+    padding: 20px;
+}
+
+.rate-page__thumbs .thumb {
+    transition: all 0.5s;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 10px 5px;
+    display: inline-block;
+}
+
+.rate-page__thumbs .thumb .amount {
+    font-size: 24px;
+}
+
+.rate-page__thumbs .thumb {
+    color: #8493a8;
+}
+
+.rate-page__thumbs .thumb.checked {
+    color: #0aabd3;
+}
+
+.rate-page__thumbs .thumb.checked.down {
+    color: #db5564;
+}
+
+.rate-page__thumbs .thumb.checked.up {
+    color: #603aba;
+}
+
+.rate-page__thumbs .thumb:hover,
+.rate-page__thumbs .thumb.state-hovered {
+    color: #000000;
+}
