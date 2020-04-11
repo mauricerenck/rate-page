@@ -1,8 +1,6 @@
-
 const initThumbRatings = () => {
     const thumbs = document.querySelectorAll('.rate-page__thumbs .thumb');
     const slug = thumbs[0].getAttribute('data-slug')
-    const storageRatings = window.localStorage.getItem('page-thumb-ratings');
     let loading = false
 
     const sendThumbRating = (rating, slug) => {
@@ -30,6 +28,7 @@ const initThumbRatings = () => {
     }
 
     const getRating = () => {
+        const storageRatings = window.localStorage.getItem('page-thumb-ratings');
         if (storageRatings !== null) {
             const ratings = JSON.parse(storageRatings)
 
@@ -46,6 +45,7 @@ const initThumbRatings = () => {
     }
 
     const setRating = (rating) => {
+        const storageRatings = window.localStorage.getItem('page-thumb-ratings');
         const selector = (rating > 0) ? '.up' : '.down'
         const newRatings = []
         let ratings = []
@@ -118,6 +118,6 @@ const initThumbRatings = () => {
             }
         })
     })
-
-
 }
+
+initThumbRatings()
