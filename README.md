@@ -12,7 +12,7 @@ If you like something without javascript and webmentions, please do have a look 
 
 ## Installation
 
-- `composer require mauricerenck/rate-page`
+- `composer require mauricerenck/ratepage`
 - unzip [master.zip](https://github.com/mauricerenck/rate-page/releases/latest) to `site/plugins/rate-page`
 - `git submodule add https://github.com/mauricerenck/rate-page.git site/plugins/rate-page`
 
