@@ -13,12 +13,12 @@ If you like something without javascript and webmentions, please do have a look 
 ## Installation
 
 - `composer require mauricerenck/ratepage`
-- unzip [master.zip](https://github.com/mauricerenck/rate-page/releases/latest) to `site/plugins/rate-page`
-- `git submodule add https://github.com/mauricerenck/rate-page.git site/plugins/rate-page`
+- unzip [master.zip](https://github.com/mauricerenck/rate-page/releases/latest) to `site/plugins/ratepage`
+- `git submodule add https://github.com/mauricerenck/rate-page.git site/plugins/ratepage`
 
 ## Config
 
-Add your own emoji oder html code in the config.php
+Add your own emoji or html code in the config.php
 
 ```
 [
@@ -35,6 +35,9 @@ You can enable webmention support in the config. When doing so, you also have to
 In your template, just load the snippet:
 
 `<?php snippet('thumb-rating'); ?>`
+
+Use this in your `<head />` to use the plugin css or write your own.
+`<?php echo css('/media/plugins/mauricerenck/ratePage/thumbs.css'); ?>`
 
 ## Future Plans
 
