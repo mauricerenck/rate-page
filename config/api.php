@@ -23,6 +23,7 @@ return [
                             'down' => $item->ratingthumbdown()->value(),
                             'title' => (string) $item->title(),
                             'url' => $item->panelUrl(),
+                            'uid' => $item->uid()
                         ];
                     }
                 }
