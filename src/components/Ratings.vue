@@ -25,8 +25,8 @@ export default {
       settings: [],
       ratingState: {
         up: 0,
-        down: 0,
-      },
+        down: 0
+      }
     };
   },
   created() {
@@ -37,22 +37,25 @@ export default {
       const savedRatings = window.localStorage.getItem("k3-rate-page");
       this.savedRatings = !savedRatings ? [] : JSON.parse(savedRatings);
 
-      this.$api.get("ratepage/all").then((response) => {
-        response.ratings.forEach((rating) => {
+      this.$api.get("ratepage/all").then(response => {
+        response.ratings.forEach(rating => {
           let newRating;
-          const foundSavedRating = this.savedRatings.filter((savedRating) => {
+          const foundSavedRating = this.savedRatings.filter(savedRating => {
             return savedRating.uid === rating.uid;
           })[0];
 
           if (!foundSavedRating) {
+            rating.state = {
+              up: 0,
+              down: 0
+            };
+
             newRating = rating;
           } else {
             foundSavedRating.state.up = foundSavedRating.up;
             foundSavedRating.state.down = foundSavedRating.down;
 
             newRating = { ...foundSavedRating, ...rating };
-
-            console.log(newRating);
           }
 
           this.ratings.push(newRating);
@@ -64,7 +67,7 @@ export default {
           JSON.stringify(this.ratings)
         );
       });
-    },
-  },
+    }
+  }
 };
 </script>
