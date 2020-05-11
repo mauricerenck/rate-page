@@ -18,7 +18,7 @@ Kirby::plugin('mauricerenck/ratePage', [
     'api' => require_once(__DIR__ . '/config/api.php'),
     'hooks' => [
         'tratschtante.webhook.received' => function ($webmention, $targetPage) {
-            if (!option('mauricerenck.ratePage.enable-webmention-support')) {
+            if (!option('mauricerenck.ratePage.enable-webmention-support') || $webmention['type'] !== 'LIKE') {
                 return;
             }
 

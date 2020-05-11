@@ -1,6 +1,6 @@
 {
   "name": "mauricerenck/ratepage",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Let your visitor rate pages",
   "type": "kirby-plugin",
   "license": "MIT",

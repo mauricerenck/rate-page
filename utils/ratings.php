@@ -15,6 +15,7 @@ class RatingHelper
             return false;
         }
 
+        // TODO Deprecated
         if ($rating === 'like-of') { // webmention twitter like
             return 1;
         }
