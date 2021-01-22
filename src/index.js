@@ -1,4 +1,5 @@
 import View from "./components/View.vue";
+import pageRatingField from "./components/fields/pageRating.vue";
 
 panel.plugin("mauricerenck/ratePage", {
     views: {
@@ -7,5 +8,8 @@ panel.plugin("mauricerenck/ratePage", {
             icon: "star",
             label: "Ratings"
         }
+    },
+    fields: {
+        pageRating: pageRatingField
     }
 });

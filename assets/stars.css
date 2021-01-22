@@ -1,0 +1,48 @@
+.rate-page__stars {
+  font-size: 16px;
+  text-align: center;
+  padding: 20px;
+}
+
+.rate-page__stars .rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+
+.rate-page__stars .rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+  cursor: pointer;
+}
+
+.rate-page__stars .rating > span.checked:before,
+.rate-page__stars .rating > span:hover:before,
+.rate-page__stars .rating > span:hover ~ span:before {
+  position: absolute;
+}
+
+.rate-page__stars .rating > span.checked:before {
+  content: "🌕";
+}
+
+.rate-page__stars .rating > span.half:before {
+  content: "🌗";
+}
+
+.rate-page__stars .rating > span.fquarter:before {
+  content: "🌘";
+}
+
+.rate-page__stars .rating > span.lquarter:before {
+  content: "🌖";
+}
+
+.rate-page__stars .rating > span.user:before {
+  content: "🌎";
+}
+
+.rate-page__stars .rating > span:hover:before,
+.rate-page__stars .rating > span:hover ~ span:before {
+  content: "🌎";
+}
