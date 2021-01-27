@@ -5,6 +5,11 @@ namespace mauricerenck\RatePage;
 use Kirby;
 
 @include_once __DIR__ . '/vendor/autoload.php';
+load([
+    'Plugin\RatePage\RatingHelper' => 'utils/ratings.php',
+    'Plugin\RatePage\ThumbRating' => 'utils/thumbs.php',
+    'Plugin\RatePage\StarRating' => 'utils/stars.php',
+], __DIR__);
 
 Kirby::plugin('mauricerenck/ratePage', [
     'options' => require_once(__DIR__ . '/config/options.php'),
