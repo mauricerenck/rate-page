@@ -1,6 +1,6 @@
 <?php
 
-namespace Plugin\RatePage;
+namespace mauricerenck\RatePage;
 
 use Kirby;
 
