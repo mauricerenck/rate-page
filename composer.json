@@ -1,6 +1,6 @@
 {
   "name": "mauricerenck/ratepage",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Let your visitor rate pages",
   "type": "kirby-plugin",
   "license": "MIT",
@@ -12,7 +12,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "mauricerenck\\Komments\\": "utils"
+      "mauricerenck\\RatePage\\": "utils"
     },
     "classmap": [
       "utils"

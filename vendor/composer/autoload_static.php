@@ -24,7 +24,7 @@ class ComposerStaticInit45009c916829417311b5c5110f10ba97
         ),
         'm' => 
         array (
-            'mauricerenck\\Komments\\' => 22,
+            'mauricerenck\\RatePage\\' => 22,
         ),
         'W' => 
         array (
@@ -70,7 +70,7 @@ class ComposerStaticInit45009c916829417311b5c5110f10ba97
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
-        'mauricerenck\\Komments\\' => 
+        'mauricerenck\\RatePage\\' => 
         array (
             0 => __DIR__ . '/../..' . '/utils',
         ),
