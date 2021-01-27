@@ -9,40 +9,40 @@
   direction: rtl;
 }
 
-.rate-page__stars .rating > span {
+.rate-page__stars .rating > .star {
   display: inline-block;
   position: relative;
   width: 1.1em;
   cursor: pointer;
 }
 
-.rate-page__stars .rating > span.checked:before,
-.rate-page__stars .rating > span:hover:before,
-.rate-page__stars .rating > span:hover ~ span:before {
+.rate-page__stars .rating > .star.checked:before,
+.rate-page__stars .rating > .star:hover:before,
+.rate-page__stars .rating > .star:hover ~ .star:before {
   position: absolute;
 }
 
-.rate-page__stars .rating > span.checked:before {
+.rate-page__stars .rating > .star.checked:before {
   content: "🌕";
 }
 
-.rate-page__stars .rating > span.half:before {
+.rate-page__stars .rating > .star.half:before {
   content: "🌗";
 }
 
-.rate-page__stars .rating > span.fquarter:before {
+.rate-page__stars .rating > .star.fquarter:before {
   content: "🌘";
 }
 
-.rate-page__stars .rating > span.lquarter:before {
+.rate-page__stars .rating > .star.lquarter:before {
   content: "🌖";
 }
 
-.rate-page__stars .rating > span.user:before {
+.rate-page__stars .rating > .star.user:before {
   content: "🌎";
 }
 
-.rate-page__stars .rating > span:hover:before,
-.rate-page__stars .rating > span:hover ~ span:before {
+.rate-page__stars .rating > .star:hover:before,
+.rate-page__stars .rating > .star:hover ~ .star:before {
   content: "🌎";
 }

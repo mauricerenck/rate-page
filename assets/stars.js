@@ -96,7 +96,8 @@ const initStarRatings = () => {
         }
 
         starDomElements.forEach(element => {
-            element.classList.remove('checked')
+            element.classList.value = 'star'
+
             if (element.dataset.id <= currentRating) {
                 element.classList.add('checked');
                 element.classList.add('user');
