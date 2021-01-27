@@ -41,4 +41,4 @@
         <span class="sum"><?php echo $avgStarsRounded; ?></span>
     <?php endif; ?>
 </div>
-<?php echo js(['/media/plugins/mauricerenck/ratePage/stars.js']); ?>
+<?php echo js([kirby()->url('media') . '/plugins/mauricerenck/ratePage/stars.js']); ?>
