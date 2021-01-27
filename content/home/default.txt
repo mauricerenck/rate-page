@@ -22,6 +22,6 @@ Ratingstar:
 
 star1: 1
 star2: 1
-star3: 2
-star4: 1
+star3: 3
+star4: 0
 star5: 2

@@ -1,5 +1,5 @@
 <?php
-use Plugin\RatePage\RatingHelper;
+use mauricerenck\RatePage\RatingHelper;
 use PHPUnit\Framework\TestCase;
 use Kirby\Cms;
 
