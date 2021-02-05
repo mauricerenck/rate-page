@@ -14,7 +14,8 @@
 
     $totalClicks = array_sum($ratings);
     $totalStars = array_sum($stars);
-    $avgStars = $totalStars / $totalClicks;
+
+    $avgStars = ($totalStars > 0 && $totalClicks > 0) ? $totalStars / $totalClicks : 0;
     $avgStarsRounded = (round($avgStars * 4)) / 4;
 ?>
 <div class="rate-page__stars">

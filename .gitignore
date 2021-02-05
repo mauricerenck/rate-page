@@ -7,9 +7,6 @@
 # Parcel cache folder
 /.cache
 
-# Composer files
-/vendor
-
 # Site files
 /kirby
 /media

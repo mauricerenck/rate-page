@@ -20,13 +20,13 @@
   },
   "require": {
     "getkirby/composer-installer": "^1.1",
-    "getkirby/cms": "^3",
     "phpunit/phpunit": "^9.4"
   },
   "config": {
     "optimize-autoloader": true
   },
   "scripts": {
-    "test": "vendor/bin/phpunit --testdox tests"
+    "test": "vendor/bin/phpunit --testdox tests",
+    "build-test-package": "git archive HEAD -o ratpage.zip --worktree-attributes"
   }
 }
