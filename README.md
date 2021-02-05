@@ -1,4 +1,4 @@
-# Rate Page
+# Rate Page PRE-RELEASE
 
 ## A Kirby rating plugin with webmention support
 
@@ -25,12 +25,55 @@ Add your own emoji or html code in the config.php
     'thumb-up-symbol' => '👍',
     'thumb-down-symbol' => '👎'
     'enable-webmention-support' => false
+    'stars.symbol-empty' => '🌑',
+    'stars.round' => true,
+    'stars.showAvg' => true,
 ]
 ```
 
 You can enable webmention support in the config. When doing so, you also have to install my webmention plugin (https://github.com/mauricerenck/tratschtante). You can then use a service like brid.gy/ to connect your twitter or mastodon account to webmentions.io. When someone likes you related tweed the like will be also added as a positive page rating.
 
 ## Usage
+
+### five star rating
+
+In your template, just load the snippet:
+
+`<?php snippet('star-rating'); ?>`
+
+Use this in your `<head />` to use the plugin css or write your own.
+`<?php echo css('/media/plugins/mauricerenck/ratePage/stars.css'); ?>`
+
+To style the stars, have a look at `assets/stars.css`. You can overwrite the following lines in your own css to add your own styling:
+
+```
+.rate-page__stars .rating > span.checked:before {
+  content: "🌕";
+}
+
+.rate-page__stars .rating > span.half:before {
+  content: "🌗";
+}
+
+.rate-page__stars .rating > span.fquarter:before {
+  content: "🌘";
+}
+
+.rate-page__stars .rating > span.lquarter:before {
+  content: "🌖";
+}
+
+.rate-page__stars .rating > span.user:before {
+  content: "🌎";
+}
+
+.rate-page__stars .rating > span:hover:before,
+.rate-page__stars .rating > span:hover ~ span:before {
+  content: "🌎";
+}
+```
+
+### thumb up/down
 
 In your template, just load the snippet:
 
@@ -42,4 +85,4 @@ Use this in your `<head />` to use the plugin css or write your own.
 ## Future Plans
 
 - json-ld output
-- fivestar ratings
+- panel fields

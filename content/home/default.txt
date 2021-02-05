@@ -1,0 +1,27 @@
+Title: Home
+
+----
+
+Pagerating:
+
+- 
+  positive: 3
+  negative: 1
+
+----
+
+Ratingthumbup: 2
+
+----
+
+Ratingthumbdown: 1
+
+----
+
+Ratingstar:
+
+star1: 1
+star2: 1
+star3: 3
+star4: 0
+star5: 2

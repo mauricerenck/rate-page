@@ -29,6 +29,7 @@ const initThumbRatings = () => {
 
     const getRating = () => {
         const storageRatings = window.localStorage.getItem('page-thumb-ratings');
+
         if (storageRatings !== null) {
             const ratings = JSON.parse(storageRatings)
 
