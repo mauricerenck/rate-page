@@ -20,8 +20,8 @@ Ratingthumbdown: 1
 
 Ratingstar:
 
-star1: 1
+star1: 0
 star2: 1
-star3: 3
+star3: 0
 star4: 0
-star5: 2
+star5: 0

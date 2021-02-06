@@ -4,13 +4,17 @@
     }
 
     $ratings = $page->ratingStar()->yaml();
-    $stars = [
-        $ratings['star1'] * 1,
-        $ratings['star2'] * 2,
-        $ratings['star3'] * 3,
-        $ratings['star4'] * 4,
-        $ratings['star5'] * 5
-    ];
+    $stars = [];
+
+    if (count($ratings) > 0) {
+        $stars = [
+            $ratings['star1'] * 1,
+            $ratings['star2'] * 2,
+            $ratings['star3'] * 3,
+            $ratings['star4'] * 4,
+            $ratings['star5'] * 5
+        ];
+    }
 
     $totalClicks = array_sum($ratings);
     $totalStars = array_sum($stars);

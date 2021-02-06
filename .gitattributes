@@ -2,6 +2,7 @@
 /site/ export-ignore
 /src/ export-ignore
 /media/ export-ignore
+/kirby/ export-ignore
 /tests/ export-ignore
 /.cache/ export-ignore
 
