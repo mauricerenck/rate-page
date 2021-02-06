@@ -1,6 +1,6 @@
 {
   "name": "mauricerenck/ratepage",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Let your visitor rate pages",
   "type": "kirby-plugin",
   "license": "MIT",
@@ -27,6 +27,10 @@
   },
   "scripts": {
     "test": "vendor/bin/phpunit --testdox tests",
-    "build-test-package": "git archive HEAD -o ratpage.zip --worktree-attributes"
+    "build-test-package": "git archive HEAD -o ratepage.zip --worktree-attributes",
+    "build-composer": "composer install --no-dev --optimize-autoloader"
+  },
+  "require-dev": {
+    "getkirby/cms": "^3.5"
   }
 }
