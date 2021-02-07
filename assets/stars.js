@@ -28,7 +28,7 @@ const initStarRatings = () => {
             return false
         }
 
-        fetch(`/${slug}/rate-page/stars`, {
+        fetch(`${slug}/rate-page/stars`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

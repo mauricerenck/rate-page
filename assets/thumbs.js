@@ -4,7 +4,7 @@ const initThumbRatings = () => {
     let loading = false
 
     const sendThumbRating = (rating, slug) => {
-        const url = '/' + slug + '/rate-page/thumb/' + rating
+        const url = `${slug}/rate-page/thumb/${rating}`
         const clientRating = setRating(rating)
         loading = true
 

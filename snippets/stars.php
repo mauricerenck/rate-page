@@ -1,6 +1,6 @@
 <?php
     if (!isset($slug)) {
-        $slug = $page->uri();
+        $slug = $page->url();
     }
 
     $ratings = $page->ratingStar()->yaml();
