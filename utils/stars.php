@@ -79,7 +79,7 @@ class StarRating
         }
 
         if (isset($data['slug']) && is_string($data['slug'])) {
-            $targetPage = page($data['slug']);
+            $targetPage = page(str_replace(site()->url(), '', $data['slug']));
         } else {
             $targetPage = $data['targetPage'];
         }
