@@ -17,21 +17,6 @@ class StarRating
         $this->ratingHelper = new RatingHelper();
     }
 
-    public function getRating($data)
-    {
-        $rating = (isset($data['rating']) && !is_null($data['rating'])) ? $data['rating'] : false;
-
-        if (!$rating) {
-            return false;
-        }
-
-        if (is_numeric($rating)) {
-            return $rating;
-        }
-
-        return false;
-    }
-
     public function writeRating($rating, $prevRating, $targetPage)
     {
         $kirby = kirby();
@@ -66,34 +51,19 @@ class StarRating
 
     public function setRating($data)
     {
-        $rating = $this->getRating($data);
         $prevRating = $this->ratingHelper->getPrevRating($data);
 
-        if (!$rating || !$this->ratingHelper->isValidRating($rating)) {
-            $response = [
-                'status' => 'failed',
-                'message' => 'Invalid field values',
-            ];
-
-            return new Response(json_encode($response), 'application/json', 412);
+        $rating = $this->ratingHelper->getRating($data);
+        if ($rating['status'] === 'failed') {
+            return new Response(json_encode($rating), 'application/json', 412);
         }
 
-        if (isset($data['slug']) && is_string($data['slug'])) {
-            $targetPage = page(str_replace(site()->url(), '', $data['slug']));
-        } else {
-            $targetPage = $data['targetPage'];
+        $targetPage = $this->ratingHelper->getPageBySlug($data);
+        if ($targetPage['status'] === 'failed') {
+            return new Response(json_encode($targetPage), 'application/json', 404);
         }
 
-        if (!$this->ratingHelper->targetExists($targetPage)) {
-            $response = [
-                'status' => 'failed',
-                'message' => 'Target not found',
-            ];
-
-            return new Response(json_encode($response), 'application/json', 404);
-        }
-
-        $this->writeRating($rating, $prevRating, $targetPage);
+        $this->writeRating($rating['rating'], $prevRating, $targetPage['targetPage']);
 
         $response = [
             'status' => 'ok',

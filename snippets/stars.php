@@ -1,7 +1,9 @@
 <?php
     if (!isset($slug)) {
-        $slug = $page->url();
+        $slug = $page->uri();
     }
+
+    $baseUrl = $kirby->url();
 
     $ratings = $page->ratingStar()->yaml();
     $stars = [];
@@ -22,7 +24,7 @@
     $avgStars = ($totalStars > 0 && $totalClicks > 0) ? $totalStars / $totalClicks : 0;
     $avgStarsRounded = (round($avgStars * 4)) / 4;
 ?>
-<div class="rate-page__stars">
+<div class="rate-page__stars"  data-slug="<?php echo $slug ?>" data-base-url="<?php echo $baseUrl ?>">
     <span><?php echo t('rating'); ?></span><br>
 
     <?php
@@ -39,7 +41,7 @@
             <?php $className = ($i <= $avgStarsRounded) ? 'checked ' : '' ?>
             <?php $className = ($i > $avgStarsRounded && $i - 1 < $avgStarsRounded) ? 'checked ' . $additionalClassName : $className ?>
 
-            <span class="star <?php echo $className; ?>" data-id="<?php echo $i; ?>" data-slug="<?php echo $slug ?>"><?php echo option('mauricerenck.ratePage.stars.symbol-empty');?></span>
+            <span class="star <?php echo $className; ?>" data-id="<?php echo $i; ?>"><?php echo option('mauricerenck.ratePage.stars.symbol-empty');?></span>
         <?php endfor; ?>
     </div>
     <?php if (option('mauricerenck.ratePage.stars.showAvg', true)):?>
