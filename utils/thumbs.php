@@ -4,50 +4,15 @@ namespace mauricerenck\RatePage;
 
 use is_numeric;
 use is_string;
+use \Response;
 
 class ThumbRating
 {
-    public function getRating($data)
+    private $ratingHelper;
+
+    public function __construct()
     {
-        $rating = (isset($data['rating']) && !is_null($data['rating'])) ? $data['rating'] : false;
-
-        if (!$rating) {
-            return false;
-        }
-
-        // TODO Deprecated
-        if ($rating === 'like-of') { // webmention twitter like
-            return 1;
-        }
-
-        if (is_numeric($rating)) {
-            if ($rating > 0) {
-                return 1;
-            } else {
-                return -1;
-            }
-        }
-
-        return 0;
-    }
-
-    public function targetExists($targetPage)
-    {
-        if (is_null($targetPage)) {
-            return false;
-        }
-
-        return true;
-    }
-
-    public function isValidRating($rating)
-    {
-        return ($rating === 1 || $rating === -1);
-    }
-
-    public function getPrevRating($data)
-    {
-        return (isset($data['prevRating']) && !is_null($data['prevRating'])) ? $data['prevRating'] : null;
+        $this->ratingHelper = new RatingHelper();
     }
 
     public function writeRating($rating, $prevRating, $targetPage)
@@ -84,25 +49,24 @@ class ThumbRating
 
     public function setRating($data)
     {
-        $rating = $this->getRating($data);
-        $prevRating = $this->getPrevRating($data);
-
-        if (!$rating || !$this->isValidRating($rating)) {
-            return 'failed';
+        $prevRating = $this->ratingHelper->getPrevRating($data);
+        $rating = $this->ratingHelper->getRating($data);
+        if ($rating['status'] === 'failed') {
+            return new Response(json_encode($rating), 'application/json', 412);
         }
 
-        if (isset($data['slug']) && is_string($data['slug'])) {
-            $targetPage = page($data['slug']);
-        } else {
-            $targetPage = $data['targetPage'];
+        $targetPage = $this->ratingHelper->getPageBySlug($data);
+        if ($targetPage['status'] === 'failed') {
+            return new Response(json_encode($targetPage), 'application/json', 404);
         }
 
-        if (!$this->targetExists($targetPage)) {
-            return 'failed';
-        }
+        $this->writeRating($rating['rating'], $prevRating, $targetPage['targetPage']);
 
-        $this->writeRating($rating, $prevRating, $targetPage);
+        $response = [
+            'status' => 'ok',
+            'message' => 'Rating saved',
+        ];
 
-        return 'thank you!';
+        return new Response(json_encode($response), 'application/json', 201);
     }
 }

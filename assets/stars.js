@@ -1,6 +1,9 @@
 const initStarRatings = () => {
-    const stars = document.querySelectorAll('.rate-page__stars .star');
-    const slug = stars[0].getAttribute('data-slug')
+    const ratingContainer = document.querySelector('.rate-page__stars');
+    const stars = ratingContainer.querySelectorAll('.star');
+    const slug = ratingContainer.getAttribute('data-slug')
+    const baseUrl = ratingContainer.getAttribute('data-base-url')
+
     let loading = false
 
 
@@ -21,14 +24,14 @@ const initStarRatings = () => {
         return 0
     }
 
-    const sendRating = (rating, slug) => {
+    const sendRating = (rating) => {
         const clientRating = setRating(rating)
 
         if (!clientRating) {
             return false
         }
 
-        fetch(`${slug}/rate-page/stars`, {
+        fetch(`${baseUrl}/ratepage/vote/stars`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

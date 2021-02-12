@@ -35,25 +35,24 @@ Kirby::plugin('mauricerenck/ratePage', [
     ],
     'routes' => [
         [
-            'pattern' => '(:all)/rate-page/thumb/(:any)',
-            'action' => function () {
+            'pattern' => 'ratepage/vote/(:any)',
+            'action' => function ($voteType = 'thumb') {
                 $data = kirby()->request()->data();
-                $thumbRating = new ThumbRating();
-                return $thumbRating->setRating($data);
-            },
-            'method' => 'POST'
-        ], [
-            'pattern' => '(:all)/rate-page/stars',
-            'action' => function () {
-                $data = kirby()->request()->data();
-                $starRating = new StarRating();
-                return $starRating->setRating($data);
+
+                if ($voteType === 'thumb') {
+                    $thumbRating = new ThumbRating();
+                    return $thumbRating->setRating($data);
+                }
+
+                if ($voteType === 'stars') {
+                    $starRating = new StarRating();
+                    return $starRating->setRating($data);
+                }
             },
             'method' => 'POST'
         ],
     ],
     'fields' => [
-        'pageRating' => [
-        ]
+        'pageRating' => []
     ]
 ]);

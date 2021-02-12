@@ -1,11 +1,15 @@
 const initThumbRatings = () => {
-    const thumbs = document.querySelectorAll('.rate-page__thumbs .thumb');
-    const slug = thumbs[0].getAttribute('data-slug')
+    const ratingContainer = document.querySelector('.rate-page__thumbs');
+    const thumbs = ratingContainer.querySelectorAll('.thumb');
+    const slug = ratingContainer.getAttribute('data-slug')
+    const baseUrl = ratingContainer.getAttribute('data-base-url')
+
     let loading = false
 
-    const sendThumbRating = (rating, slug) => {
-        const url = `${slug}/rate-page/thumb/${rating}`
+    const sendThumbRating = (rating) => {
+        const url = `${baseUrl}/ratepage/vote/thumb`
         const clientRating = setRating(rating)
+
         loading = true
 
         if (clientRating === false) {
