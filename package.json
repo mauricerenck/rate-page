@@ -1,6 +1,6 @@
 {
   "name": "ratepage",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Let your visitor rate pages",
   "main": "index.js",
   "author": "Maurice Renck",

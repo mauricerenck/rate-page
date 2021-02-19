@@ -40,13 +40,15 @@ class StarRating
             $fieldData['star' . $prevRating]--;
         }
 
-        $fieldData = yaml::encode($fieldData);
+        $fieldDataString = yaml::encode($fieldData);
 
         $kirby = kirby();
         $kirby->impersonate('kirby');
         $targetPage->update([
-            'ratingStar' => $fieldData
+            'ratingStar' => $fieldDataString
         ]);
+
+        return $fieldData;
     }
 
     public function setRating($data)
@@ -63,13 +65,37 @@ class StarRating
             return new Response(json_encode($targetPage), 'application/json', 404);
         }
 
-        $this->writeRating($rating['rating'], $prevRating, $targetPage['targetPage']);
+        $ratings = $this->writeRating($rating['rating'], $prevRating, $targetPage['targetPage']);
 
         $response = [
             'status' => 'ok',
             'message' => 'Rating saved',
+            'avgRating' => $this->getAvgRating($ratings)
         ];
 
         return new Response(json_encode($response), 'application/json', 201);
+    }
+
+    public function getAvgRating($ratings)
+    {
+        $stars = [];
+
+        if (count($ratings) > 0) {
+            $stars = [
+                $ratings['star1'] * 1,
+                $ratings['star2'] * 2,
+                $ratings['star3'] * 3,
+                $ratings['star4'] * 4,
+                $ratings['star5'] * 5
+            ];
+        }
+
+        $totalClicks = array_sum($ratings);
+        $totalStars = array_sum($stars);
+
+        $avgStars = ($totalStars > 0 && $totalClicks > 0) ? $totalStars / $totalClicks : 0;
+        $avgStarsRounded = (round($avgStars * 4)) / 4;
+
+        return $avgStarsRounded;
     }
 }
