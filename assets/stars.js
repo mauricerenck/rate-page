@@ -1,6 +1,7 @@
 const initStarRatings = () => {
     const ratingContainer = document.querySelector('.rate-page__stars');
     const stars = ratingContainer.querySelectorAll('.star');
+    const summary = ratingContainer.querySelector('.sum');
     const slug = ratingContainer.getAttribute('data-slug')
     const baseUrl = ratingContainer.getAttribute('data-base-url')
 
@@ -38,8 +39,9 @@ const initStarRatings = () => {
             },
             body: JSON.stringify(clientRating)
         })
-            .then(() => {
-                setUserRating()
+            .then(response => response.json())
+            .then((result) => {
+                setUserRating(result.avgRating)
                 loading = false
             })
             .catch(error => {
@@ -90,7 +92,7 @@ const initStarRatings = () => {
     }
 
 
-    const setUserRating = () => {
+    const setUserRating = (avgRating) => {
         const starDomElements = document.querySelectorAll('.rate-page__stars .rating .star');
         const currentRating = getRating();
 
@@ -106,6 +108,10 @@ const initStarRatings = () => {
                 element.classList.add('user');
             }
         });
+
+        if (avgRating) {
+            summary.innerHTML = avgRating.toString()
+        }
     }
 
     stars.forEach((thumb) => {
