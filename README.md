@@ -1,4 +1,4 @@
-# Rate Page PRE-RELEASE
+# Rate Page
 
 ## A Kirby rating plugin with webmention support
 
@@ -23,13 +23,15 @@ Add your own emoji or html code in the config.php
 ```
 [
     'thumb-up-symbol' => '👍',
-    'thumb-down-symbol' => '👎'
-    'enable-webmention-support' => false
+    'thumb-down-symbol' => '👎',
+    'enable-webmention-support' => false,
     'stars.symbol-empty' => '🌑',
     'stars.round' => true,
     'stars.showAvg' => true,
 ]
 ```
+
+**Please make sure to prefix all the options with `mauricerenck.ratePage.`**. For example the debug option should be set in your `config.php` like so: `'mauricerenck.komments.debug' => true`
 
 You can enable webmention support in the config. When doing so, you also have to install my webmention plugin (https://github.com/mauricerenck/tratschtante). You can then use a service like brid.gy/ to connect your twitter or mastodon account to webmentions.io. When someone likes you related tweed the like will be also added as a positive page rating.
 
