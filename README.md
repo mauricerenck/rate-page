@@ -4,6 +4,8 @@
 
 ![GitHub release](https://img.shields.io/github/release/mauricerenck/rate-page.svg?maxAge=1800) ![License](https://img.shields.io/github/license/mashape/apistatus.svg) ![Kirby Version](https://img.shields.io/badge/Kirby-3%2B-black.svg)
 
+** I am looking for somebody taking over the development of this plugin as I don not have enough time anymore**
+
 A Page Rating Plugin. Working without page reload and can also receive webmentions. Comes with a nice panel overview of all the ratings.
 
 ![panel view](doc-assets/panel.png)
