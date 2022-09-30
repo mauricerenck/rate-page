@@ -5,13 +5,9 @@ namespace mauricerenck\RatePage;
 use Kirby;
 
 @include_once __DIR__ . '/vendor/autoload.php';
-load([
-    'Plugin\RatePage\RatingHelper' => 'utils/ratings.php',
-    'Plugin\RatePage\ThumbRating' => 'utils/thumbs.php',
-    'Plugin\RatePage\StarRating' => 'utils/stars.php',
-], __DIR__);
 
 Kirby::plugin('mauricerenck/ratePage', [
+    'areas' => require_once(__DIR__ . '/components/areas.php'),
     'options' => require_once(__DIR__ . '/config/options.php'),
     'snippets' => [
         'thumb-rating' => __DIR__ . '/snippets/thumbs.php',
@@ -20,6 +16,19 @@ Kirby::plugin('mauricerenck/ratePage', [
     'api' => require_once(__DIR__ . '/config/api.php'),
     'hooks' => [
         'tratschtante.webhook.received' => function ($webmention, $targetPage) {
+            if (!option('mauricerenck.ratePage.enable-webmention-support') || $webmention['type'] !== 'LIKE') {
+                return;
+            }
+
+            $thumbRating = new ThumbRating();
+            $data = [
+                'rating' => 1,
+                'prevRating' => null,
+                'targetPage' => $targetPage
+            ];
+            return $thumbRating->setRating($data);
+        },
+        'indieConnector.webmention.received' => function ($webmention, $targetPage) {
             if (!option('mauricerenck.ratePage.enable-webmention-support') || $webmention['type'] !== 'LIKE') {
                 return;
             }

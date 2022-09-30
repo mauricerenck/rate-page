@@ -1,52 +1,68 @@
 const initThumbRatings = () => {
     const ratingContainer = document.querySelector('.rate-page__thumbs');
     const thumbs = ratingContainer.querySelectorAll('.thumb');
-    const slug = ratingContainer.getAttribute('data-slug')
-    const baseUrl = ratingContainer.getAttribute('data-base-url')
+
+    const slug = ratingContainer.dataset.slug
+    const baseUrl = ratingContainer.dataset.baseUrl
 
     let loading = false
 
-    const sendThumbRating = (rating) => {
+
+    const updateThumbRating = (rating) => {
         const url = `${baseUrl}/ratepage/vote/thumb`
-        const clientRating = setRating(rating)
 
-        loading = true
-
-        if (clientRating === false) {
-            return false
+        if (loading === true) {
+            return;
         }
 
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(clientRating)
-        })
-            .then(() => {
-                loading = false
-            })
-            .catch(error => {
-                console.log(error)
-            })
+        loading = true;
+
+        const userRating = processUserRating(rating);
+
+        const newRating = {
+            slug: slug,
+            rating: rating,
+            updated: updated,
+            prevRating: prevRating
+        }
+
+        // const clientRating = setRating(rating)
+
+        // loading = true
+
+        // if (clientRating === false) {
+        //     return false
+        // }
+
+        // fetch(url, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(clientRating)
+        // })
+        //     .then(() => {
+        //         loading = false
+        //     })
+        //     .catch(error => {
+        //         console.log(error)
+        //     })
     }
 
-    const getRating = () => {
-        const storageRatings = window.localStorage.getItem('page-thumb-ratings');
 
-        if (storageRatings !== null) {
-            const ratings = JSON.parse(storageRatings)
+    const processUserRating = (newRating) => {
+        const userRating = getUserRating();
 
-            let rating = ratings.filter(page => {
-                return page.slug === slug
-            })
-
-            if (rating.length > 0) {
-                return rating[0].rating
-            }
+        switch (newRating) {
+            case 0: break;
+            case -1: break;
+            case 1: break;
         }
 
-        return 0
+        // update localstorage
+        // update thumbs in html 
+
+
     }
 
     const setRating = (rating) => {
@@ -108,21 +124,43 @@ const initThumbRatings = () => {
         }
     }
 
-    const currentRating = getRating();
+    const getUserRating = () => {
+        const storageRatings = window.localStorage.getItem('page-thumb-ratings');
 
-    thumbs.forEach((thumb) => {
-        const rating = thumb.getAttribute('data-id')
-
-        if (currentRating == rating) {
-            thumb.classList.add('checked')
+        if (!storageRatings) {
+            return 0;
         }
 
+        const ratings = JSON.parse(storageRatings)
+
+        const userRating = ratings.find(page => {
+            return page.slug === slug
+        })
+
+        if (!userRating) {
+            return 0
+        }
+
+
+        return userRating.rating
+    }
+
+
+
+    thumbs.forEach((thumb) => {
+        const rating = thumb.dataset.id;
+
+        // if (userRating == rating) {
+        //     thumb.classList.add('checked')
+        // }
+
         thumb.addEventListener('click', () => {
-            if (!loading) {
-                sendThumbRating(rating, slug)
-            }
+            updateThumbRating(rating, slug)
         })
     })
+
+
+
 }
 
 initThumbRatings()

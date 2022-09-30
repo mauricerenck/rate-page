@@ -1,0 +1,19 @@
+Title: test
+
+----
+
+Ratingthumbup: 0
+
+----
+
+Ratingthumbdown: 2
+
+----
+
+Ratingstar:
+
+star1: 1
+star2: 0
+star3: 0
+star4: 0
+star5: 0

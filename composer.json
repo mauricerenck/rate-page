@@ -18,9 +18,13 @@
       "utils"
     ]
   },
+  "require-dev": {
+    "getkirby/cms": "^3.6",
+    "phpunit/phpunit": "^9.4"
+  },
   "require": {
     "getkirby/composer-installer": "^1.1",
-    "phpunit/phpunit": "^9.4"
+    "php": ">=7.3.0 <8.1.0"
   },
   "config": {
     "optimize-autoloader": true
@@ -30,7 +34,5 @@
     "build-test-package": "git archive HEAD -o ratepage.zip --worktree-attributes",
     "build-composer": "composer install --no-dev --optimize-autoloader"
   },
-  "require-dev": {
-    "getkirby/cms": "^3.5"
-  }
+  "minimum-stability": "dev"
 }

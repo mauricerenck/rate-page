@@ -51,6 +51,7 @@ class ThumbRating
     {
         $prevRating = $this->ratingHelper->getPrevRating($data);
         $rating = $this->ratingHelper->getRating($data);
+
         if ($rating['status'] === 'failed') {
             return new Response(json_encode($rating), 'application/json', 412);
         }

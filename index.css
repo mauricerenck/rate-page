@@ -1,1 +1,43 @@
-.k-ratepage-list{background:#fff}
+.k-page-ratings-view table {
+  width: 100%;
+  border: 0;
+  background: #fff;
+  box-shadow: var(--box-shadow-item);
+  margin-top: 2em;
+}
+.k-page-ratings-view tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.k-page-ratings-view th {
+  padding: 7px 5px;
+  text-align: left;
+}
+.k-page-ratings-view th.clickable {
+  cursor: pointer;
+}
+.k-page-ratings-view th.active {
+  text-decoration: underline;
+}
+.k-page-ratings-view td {
+  width: 10%;
+  padding: 7px 5px;
+}
+.k-page-ratings-view td:first-child {
+  width: 50%;
+}
+.k-page-ratings-view .starrating {
+  margin-top: 40px;
+}.k-page-ratings-view .version-box {
+  text-align: right;
+}
+.k-page-ratings-view .version-box .version {
+  font-size: 14px;
+  padding: 0.5em 0;
+}
+.k-page-ratings-view .version-box .update-available {
+  color: var(--color-positive);
+}
+.k-page-ratings-view .version-box .align-center {
+  display: block;
+  text-align: center;
+}
